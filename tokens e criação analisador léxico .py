@@ -8,6 +8,8 @@ tokens = (
     'MINUS',
     'TIMES',
     'DIVIDE',
+    'LPAREN',
+    'RPAREN',
 )
 
 # Expressões regulares para tokens simples
@@ -15,6 +17,8 @@ t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
 
 # Expressão regular para identificar IDs (identificadores)
 def t_ID(t):
@@ -41,7 +45,7 @@ lexer = lex.lex()
 # Testando o analisador léxico
 if __name__ == "__main__":
     # Teste de entrada
-    data = 'a 123 + b 456 * c - 789 / d'
+    data = '(+ 3 (* 4 2))'
 
     # Passa a entrada para o lexer
     lexer.input(data)
@@ -52,4 +56,3 @@ if __name__ == "__main__":
         if not tok:
             break
         print(tok)
-
